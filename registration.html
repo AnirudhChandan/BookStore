@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <script>
+        // Selecting form element
+        const form = document.querySelector('form');
+
+        // Adding event listener to form submission
+        form.addEventListener('submit', function(event) {
+            // Preventing default form submission
+            event.preventDefault();
+
+            // Selecting form fields
+            const firstName = document.querySelector('#firstname');
+            const lastName = document.querySelector('#lastname');
+            const email = document.querySelector('#email');
+            const password = document.querySelector('#pass');
+            const address = document.querySelector('#addr');
+            const mobileNo = document.querySelector('#mobileno');
+            const gender = document.querySelector('input[name="gender"]:checked');
+
+            // Validating form fields
+            let isValid = true;
+
+            // Validating first name
+            if (firstName.value.length < 6) {
+                alert('First name should be at least 6 characters long.');
+                isValid = false;
+            }
+
+            // Validating last name
+            if (lastName.value.length === 0) {
+                alert('Last name is required.');
+                isValid = false;
+            }
+
+            // Validating email address
+            if (!email.value.match(/^\S+@\S+\.\S+$/)) {
+                alert('Invalid email address.');
+                isValid = false;
+            }
+
+            // Validating password
+            if (password.value.length < 6) {
+                alert('Password should be at least 6 characters long.');
+                isValid = false;
+            }
+
+            // Validating address
+            if (address.value.length === 0) {
+                alert('Address is required.');
+                isValid = false;
+            }
+
+            // Validating mobile number
+            if (!mobileNo.value.match(/^\d{10}$/)) {
+                alert('Invalid mobile number.');
+                isValid = false;
+            }
+
+            // Validating gender
+            if (!gender) {
+                alert('Gender is required.');
+                isValid = false;
+            }
+
+            // Submitting form if valid
+            if (isValid) {
+                form.submit();
+            }
+        });
+    </script>
+</head>
+
+<body bgcolor="#E4F0F8">
+    <center>
+        <font color="blue" size="6" face="arial">Registration Form</font>
+    </center><br />
+    <form>
+        First Name(Minimum 6 characters)
+        <font color="red">* </font>
+        <input type='text' id='firstname' required /><br /><br /> Last Name
+        <font color="red">
+            <font color="red">* </font>
+        </font> &nbsp;&nbsp;&nbsp;
+        <input type='text' id='lastname' required /><br /><br /> EmailAddress
+        <font color="red">* </font> &nbsp;&nbsp;&nbsp;
+        <input type='text' id='email' required/><br />
+        <font color="red">(one e-mail id only):</font> &nbsp;&nbsp;&nbsp;
+        <font color="redblue">e.g. smith@hotmail.com</font><br /><br/> Password(minimum 6 characters)
+        <font color="red">* </font> &nbsp;&nbsp;&nbsp;
+        <input type='password' id='pass' required><br /><br/> Address
+        <font color="red">* </font> &nbsp;&nbsp;&nbsp;
+        <textarea rows="2" cols="20" id='addr' required/></textarea> <br /> <br/> Mobile No
+        <font color="red">* </font> &nbsp;&nbsp;&nbsp;
+        <input type='text' id='mobileno' required/><br /> Gender: <input type='radio' name="gender">male
+        <input type='radio' name="gender" required>female<br/><br />
+        <input type='Submit' value='submit' />
+        <input type='Reset' value='reset' />
+    </form>
+</body>
+
+</html>
